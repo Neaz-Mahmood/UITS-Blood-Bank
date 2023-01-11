@@ -1,0 +1,60 @@
+<div class="modal-wrapper" id="add-donor-modal">
+    <div class="modal">
+        <a href="#" onclick="closeModal()" class="modal-close">+</a>
+        <div class="modal-title">
+            <h2>Create New Donor</h2>
+        </div>
+        <div class="modal-body">
+            <form method="post" action="/donors" id="add-donor-form">
+                <input type="text" placeholder="enter name" name="name" />
+                <p class="error name-error"></p>
+
+                <input type="text" placeholder="enter email" name="email" />
+                <p class="error email-error"></p>
+
+                <input type="text" placeholder="enter mobile" name="mobile" />
+                <p class="error mobile-error"></p>
+
+                <input
+                    type="text"
+                    placeholder="enter blood type"
+                    name="bloodType"
+                />
+
+                <input type="text" placeholder="enter rh" name="rhFactor" />
+
+                <input type="text" placeholder="enter batch" name="batch" />
+
+                <input type="text" placeholder="enter section" name="section" />
+
+                <input
+                    type="text"
+                    placeholder="enter department"
+                    name="department"
+                />
+
+                <p class="error common-error"></p>
+
+                <input type="submit" value="Submit" />
+            </form>
+        </div>
+    </div>
+</div>
+<script>
+    const modal = document.querySelector("#add-donor-modal");
+    const form = document.querySelector("#add-donor-form");
+
+    // success toast
+    const successToast = Toastify({
+        text: "User was added successfully! Reloading the list...",
+        duration: 1000,
+    });
+
+    function closeModal() {
+        modal.style.display = "none";
+        modal.body.innerHTML = "";
+    }
+    function openModal() {
+        modal.style.display = "block";
+    }
+</script>

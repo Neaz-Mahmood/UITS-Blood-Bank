@@ -1,0 +1,61 @@
+<div class="modal-wrapper" id="add-user-modal">
+    <div class="modal">
+        <a href="#" onclick="closeModal()" class="modal-close">+</a>
+        <div class="modal-title">
+            <h2>Create New User</h2>
+        </div>
+        <div class="modal-body">
+            <form method="post" action="/users" id="add-user-form">
+                <input type="text" placeholder="enter name" name="name" />
+                <p class="error name-error"></p>
+
+                <input type="text" placeholder="enter email" name="email" />
+                <p class="error email-error"></p>
+
+                <input type="text" placeholder="enter mobile" name="mobile" />
+                <p class="error mobile-error"></p>
+
+                <input
+                    type="password"
+                    placeholder="enter password"
+                    name="password"
+                />
+                <p class="error password-error"></p>
+
+                <input type="text" placeholder="enter batch" name="batch" />
+                <p class="error batch-error"></p>
+
+                <input type="text" placeholder="enter section" name="section" />
+                <p class="error section-error"></p>
+
+                <input
+                    type="text"
+                    placeholder="enter department"
+                    name="department"
+                />
+                <p class="error department-error"></p>
+
+                <p class="error common-error"></p>
+
+                <input type="submit" value="Users" />
+            </form>
+        </div>
+    </div>
+</div>
+<script>
+    const modal = document.querySelector("#add-user-modal");
+    const form = document.querySelector("#add-user-form");
+
+    // success toast
+    const successToast = Toastify({
+        text: "User was added successfully! Reloading the list...",
+        duration: 1000,
+    });
+
+    function closeModal() {
+        modal.style.display = "none";
+    }
+    function openModal() {
+        modal.style.display = "block";
+    }
+</script>
