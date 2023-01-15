@@ -1,12 +1,5 @@
-// external imports
-const bcrypt = require("bcrypt");
-const { unlink } = require("fs");
-const path = require("path");
-
-// internal imports
 const Donor = require("../models/Donor");
 
-// get users page
 async function getDonors(req, res, next) {
     try {
         const donors = await Donor.find();
@@ -18,7 +11,6 @@ async function getDonors(req, res, next) {
     }
 }
 
-// add donor
 async function addDonor(req, res, next) {
     let newDonor;
 
@@ -26,7 +18,6 @@ async function addDonor(req, res, next) {
         ...req.body,
     });
 
-    // save user or send error
     try {
         const result = await newDonor.save();
 
@@ -68,7 +59,6 @@ async function searchDonor(req, res, next) {
     }
 }
 
-// remove donor
 async function removeDonor(req, res, next) {
     try {
         const donor = await Donor.findByIdAndDelete({

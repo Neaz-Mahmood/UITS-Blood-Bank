@@ -1,10 +1,7 @@
-// external imports
 const bcrypt = require("bcrypt");
 
-// internal imports
 const User = require("../models/People");
 
-// get users page
 async function getUsers(req, res, next) {
     try {
         const users = await User.find();
@@ -16,7 +13,6 @@ async function getUsers(req, res, next) {
     }
 }
 
-// add user
 async function addUser(req, res, next) {
     let newUser;
     const hashedPassword = await bcrypt.hash(req.body.password, 10);
@@ -26,7 +22,6 @@ async function addUser(req, res, next) {
         password: hashedPassword,
     });
 
-    // save user or send error
     try {
         const result = await newUser.save();
 
@@ -45,7 +40,6 @@ async function addUser(req, res, next) {
     }
 }
 
-// remove user
 async function removeUser(req, res, next) {
     try {
         const user = await User.findByIdAndDelete({

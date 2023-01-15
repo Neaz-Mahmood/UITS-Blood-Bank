@@ -1,20 +1,15 @@
-// external imports
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const createError = require("http-errors");
 
-// internal imports
 const User = require("../models/People");
 
-// get login page
 function getLogin(req, res, next) {
     res.render("index");
 }
 
-// do login
 async function login(req, res, next) {
     try {
-        // find a user who has this email/username
         const user = await User.findOne({
             $or: [{ email: req.body.username }, { mobile: req.body.username }],
         });
@@ -24,9 +19,6 @@ async function login(req, res, next) {
                 req.body.password,
                 user.password
             );
-            // const isValidPassword =
-            //     user.password == req.body.password ? true : false;
-
             if (isValidPassword) {
                 // prepare the user object to generate token
                 const userObject = {
@@ -37,19 +29,16 @@ async function login(req, res, next) {
                     role: user.role || "user",
                 };
 
-                // generate token
                 const token = jwt.sign(userObject, process.env.JWT_SECRET, {
                     expiresIn: process.env.JWT_EXPIRY,
                 });
 
-                // set cookie
                 res.cookie(process.env.COOKIE_NAME, token, {
                     maxAge: process.env.JWT_EXPIRY,
                     httpOnly: true,
                     signed: true,
                 });
 
-                // set logged in user local identifier
                 res.locals.loggedInUser = userObject;
 
                 res.redirect("donors");
@@ -73,7 +62,6 @@ async function login(req, res, next) {
     }
 }
 
-// do logout
 function logout(req, res) {
     res.clearCookie(process.env.COOKIE_NAME);
     res.send("logged out");
