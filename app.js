@@ -11,6 +11,7 @@ const moment = require("moment");
 const loginRouter = require("./router/loginRouter");
 const usersRouter = require("./router/usersRouter");
 const donorsRouter = require("./router/donorsRouter");
+const searchRouter = require("./router/searchRouter");
 
 // internal imports
 const {
@@ -55,6 +56,7 @@ app.use(cookieParser(process.env.COOKIE_SECRET));
 app.use("/", loginRouter);
 app.use("/users", usersRouter);
 app.use("/donors", donorsRouter);
+app.use("/search", searchRouter);
 
 // 404 not found handler
 app.use(notFoundHandler);

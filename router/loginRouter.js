@@ -8,7 +8,6 @@ const {
     doLoginValidators,
     doLoginValidationHandler,
 } = require("../middlewares/login/loginValidators");
-const { redirectLoggedIn } = require("../middlewares/common/checkLogin");
 
 const router = express.Router();
 

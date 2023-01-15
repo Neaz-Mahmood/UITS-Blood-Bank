@@ -35,25 +35,30 @@
 
                 <p class="error common-error"></p>
 
-                <input type="submit" value="Submit" />
+                <input type="button" value="Submit" onclick="submitForm()" />
             </form>
         </div>
     </div>
 </div>
 <script>
     const modal = document.querySelector("#add-donor-modal");
-    const form = document.querySelector("#add-donor-form");
-
+    const form = document.getElementById("add-donor-form");
+    function closeModal() {
+        modal.style.display = "none";
+        modal.body.innerHTML = "";
+    }
+    function submitForm() {
+        form.submit();
+        form.reset();
+        closeModal();
+        return false;
+    }
     // success toast
     const successToast = Toastify({
         text: "User was added successfully! Reloading the list...",
         duration: 1000,
     });
 
-    function closeModal() {
-        modal.style.display = "none";
-        modal.body.innerHTML = "";
-    }
     function openModal() {
         modal.style.display = "block";
     }

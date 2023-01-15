@@ -14,7 +14,7 @@ const {
     addUserValidationHandler,
 } = require("../middlewares/users/userValidators");
 
-const { checkLogin, requireRole } = require("../middlewares/common/checkLogin");
+const { checkLogin } = require("../middlewares/common/checkLogin");
 
 const router = express.Router();
 
@@ -31,9 +31,6 @@ router.get(
 router.post("/", decorateHtmlResponse("Users"), checkLogin, addUser);
 
 // remove user
-router.delete(
-    "/:id", //checkLogin, requireRole(["admin"]),
-    removeUser
-);
+router.delete("/:id", checkLogin, removeUser);
 
 module.exports = router;

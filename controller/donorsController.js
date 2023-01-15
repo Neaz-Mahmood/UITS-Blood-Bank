@@ -45,6 +45,29 @@ async function addDonor(req, res, next) {
     }
 }
 
+async function searchDonor(req, res, next) {
+    let bloodType = req.body.bloodType;
+    let rhFactor = req.body.rhFactor;
+
+    try {
+        const donors = await Donor.find({
+            bloodType: bloodType,
+            rhFactor: rhFactor,
+        });
+        res.render("donors", {
+            donors: donors,
+        });
+    } catch (err) {
+        res.status(500).json({
+            errors: {
+                common: {
+                    msg: "Unknown error occured!",
+                },
+            },
+        });
+    }
+}
+
 // remove donor
 async function removeDonor(req, res, next) {
     try {
@@ -69,5 +92,6 @@ async function removeDonor(req, res, next) {
 module.exports = {
     getDonors,
     addDonor,
+    searchDonor,
     removeDonor,
 };

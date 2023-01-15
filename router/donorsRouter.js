@@ -5,27 +5,22 @@ const express = require("express");
 const {
     getDonors,
     addDonor,
+    searchDonor,
     removeDonor,
 } = require("../controller/donorsController");
 const decorateHtmlResponse = require("../middlewares/common/decorateHtmlResponse");
 
-const { checkLogin, requireRole } = require("../middlewares/common/checkLogin");
+const { checkLogin } = require("../middlewares/common/checkLogin");
 
 const router = express.Router();
 
-// users page
-router.get(
-    "/",
-    decorateHtmlResponse("Donors"),
-    checkLogin,
-    //requireRole(["admin"]),
-    getDonors
-);
+// donors page
+router.get("/", decorateHtmlResponse("Donors"), checkLogin, getDonors);
 
-// add user
+// add donor
 router.post("/", decorateHtmlResponse("Donors"), checkLogin, addDonor);
 
-// remove user
+// remove donors
 router.delete("/:id", checkLogin, removeDonor);
 
 module.exports = router;

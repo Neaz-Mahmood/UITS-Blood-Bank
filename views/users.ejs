@@ -38,16 +38,7 @@
                     <tbody id="users-table">
                         <% users.forEach(function(user) { %>
                         <tr id="<%= user._id %>">
-                            <td class="name">
-                                <% if (user.avatar) { %>
-                                <img
-                                    src="./uploads/avatars/<%= user.avatar %>"
-                                />
-                                <% } else { %>
-                                <img src="./images/nophoto.png" />
-                                <% } %>
-                                <span><%= user.name %></span>
-                            </td>
+                            <td class="name"><%= user.name %></td>
                             <td><%= user.email %></td>
                             <td class="manage">
                                 <img

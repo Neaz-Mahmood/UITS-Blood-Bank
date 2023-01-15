@@ -1,7 +1,5 @@
 // external imports
 const bcrypt = require("bcrypt");
-const { unlink } = require("fs");
-const path = require("path");
 
 // internal imports
 const User = require("../models/People");
