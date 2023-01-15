@@ -15,13 +15,22 @@
                 <input type="text" placeholder="enter mobile" name="mobile" />
                 <p class="error mobile-error"></p>
 
-                <input
-                    type="text"
-                    placeholder="enter blood type"
-                    name="bloodType"
-                />
-
-                <input type="text" placeholder="enter rh" name="rhFactor" />
+                <label class="search_blood" for="bloodType"
+                    >Choose a blood type:</label
+                >
+                <select name="bloodType" id="bloodType">
+                    <option value="A">A</option>
+                    <option value="B">B</option>
+                    <option value="O">O</option>
+                    <option value="AB">AB</option>
+                </select>
+                <label class="search_blood" for="rhFactor"
+                    >Choose a RH factor:</label
+                >
+                <select name="rhFactor" id="rhFactor">
+                    <option value="+">Positive</option>
+                    <option value="-">Negative</option>
+                </select>
 
                 <input type="text" placeholder="enter batch" name="batch" />
 
